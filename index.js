@@ -1,6 +1,7 @@
 //require the Twilio module
 var twilio = require('twilio');
 var express = require('express');
+var password = require('./password.js')
 var fs = require('fs');
 var app = express();
 
@@ -17,7 +18,7 @@ app.post('/sendsms',function(req,res){
 
       res.set('content-type','text/html');
 
-      if(req.body.password != 'elatedcheese')
+      if(req.body.password !== password)
       {
           res.end('Sorry. Wrong password. <a href="index.html">Go back and try again.</a>');
           return;
